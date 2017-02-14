@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - myseckill@localhost" uuid="9da0399e-6318-4d5e-9288-43c0ac734b58">
+    <database-info product="MySQL" version="5.5.53" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="myseckill">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="jkxyshsflower"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="seckill"/>
+      <schema id="7" name="test"/>
+      <schema id="8" name="vshop"/>
+      <table id="9" parent="1" name="seckill">
+        <comment>秒杀库存表</comment>
+      </table>
+      <table id="10" parent="1" name="success_killed">
+        <comment>秒杀成功明细表</comment>
+      </table>
+      <column id="11" parent="9" name="seckill_id">
+        <comment>商品ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="12" parent="9" name="name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(120)|0</data-type>
+      </column>
+      <column id="13" parent="9" name="number">
+        <comment>商品库存</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="14" parent="9" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="15" parent="9" name="start_time">
+        <comment>秒杀开始时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="16" parent="9" name="end_time">
+        <comment>秒杀结束时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <index id="17" parent="9" name="idx_create_time">
+        <columns>create_time</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="18" parent="9" name="idx_end_time">
+        <columns>end_time</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="19" parent="9" name="idx_start_time">
+        <columns>start_time</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="20" parent="9" name="PRIMARY">
+        <columns>seckill_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="21" parent="10" name="seckill_id">
+        <comment>秒杀商品ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="22" parent="10" name="user_phone">
+        <comment>用户手机号</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="23" parent="10" name="state">
+        <comment>状态标识：-1:无效 0：成功 1：已付款 3：已发货</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+        <default-expression>&apos;-1&apos;</default-expression>
+      </column>
+      <column id="24" parent="10" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <index id="25" parent="10" name="idx_create_time">
+        <columns>create_time</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="26" parent="10" name="PRIMARY">
+        <columns>seckill_id
+user_phone</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

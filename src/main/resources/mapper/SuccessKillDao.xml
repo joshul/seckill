@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--设置对象包路径下的Dao接口-->
+<mapper namespace="org.seckill.dao.SuccessKilledDao">
+    <!--插入购买明显，可重复过滤-->
+    <!--IGNORE:忽略错误-->
+    <insert id="insertSuccessKilled">
+        INSERT IGNORE INTO success_killed(seckill_id,user_phone,state)
+        VALUES (#{seckillId},#{userPhone},0)
+    </insert>
+
+    <!--根据id查询SuccessKilled并携带秒杀产品对象实例-->
+    <!--SuccessKilled queryByIdWithSeckilled(long seckillId,long userPhone);-->
+    <!--<select id="queryByIdWithSeckilled" resultType="SuccessKilled">
+      SELECT
+        sk.seckill_id,sk.user_phone,sk.state,sk.create_time
+        &lt;!&ndash;通过别名的方式来将查询结果封装到Successkilled的seckill属性中&ndash;&gt;
+        s.seckill_id "seckill.seckill_id",
+        s.name "seckill.name",
+        s.number "seckill.number",
+        s.start_time "seckill.start_time",
+        s.end_time "seckill.end_time"
+      FROM
+        success_killed sk INNER JOIN seckill s on sk.seckill_id = s.seckill_id
+      WHERE sk.seckill_id = #{seckillId} AND sk.user_phone = #{userPhone}
+    </select>-->
+    <select id="queryByIdWithSeckill" resultType="SuccessKilled">
+        SELECT
+        sk.seckill_id,
+        sk.user_phone,
+        sk.state,
+        sk.create_time,
+        <!--通过别名的方式来将查询结果封装到Successkilled的seckill属性中-->
+        s.seckill_id "seckill.seckill_id",
+        s.name "seckill.name",
+        s.number "seckill.number",
+        s.start_time "seckill.start_time",
+        s.end_time "seckill.end_time",
+        s.create_time "seckill.create_time"
+        FROM success_killed sk
+        INNER JOIN seckill s ON sk.seckill_id = s.seckill_id
+        WHERE sk.seckill_id = #{seckillId} AND sk.user_phone = #{userPhone}
+    </select>
+</mapper>

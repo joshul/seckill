@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - myseckill@localhost" uuid="9da0399e-6318-4d5e-9288-43c0ac734b58">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <introspection-scope>myseckill:</introspection-scope>
+      <resolve-scope>myseckill:</resolve-scope>
+    </data-source>
+  </component>
+</project>
